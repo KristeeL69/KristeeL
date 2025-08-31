@@ -26,6 +26,12 @@
             color: #f0f0f0;
         }
 
+        body.gay-mode {
+            background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/1024px-Gay_Pride_Flag.svg.png") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
         .title {
             font-weight: 900;
             font-size: 52px;
@@ -124,6 +130,7 @@
         .theme-toggle:hover { background: #555; }
         body.day-mode .theme-toggle { background: #333; color: #fff; }
         body.night-mode .theme-toggle { background: #f0f0f0; color: #121212; }
+        body.gay-mode .theme-toggle { background: rgba(0,0,0,0.6); color: #fff; }
 
         @media(max-width: 900px) {
             .main-container { flex-direction: column; align-items: center; }
@@ -184,8 +191,12 @@
                 body.classList.remove('night-mode');
                 body.classList.add('day-mode');
                 btn.textContent = '☀️ day';
-            } else {
+            } else if(body.classList.contains('day-mode')){
                 body.classList.remove('day-mode');
+                body.classList.add('gay-mode');
+                btn.textContent = '🌈 gay';
+            } else {
+                body.classList.remove('gay-mode');
                 body.classList.add('night-mode');
                 btn.textContent = '🌙 night';
             }

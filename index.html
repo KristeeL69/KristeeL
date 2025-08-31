@@ -11,18 +11,51 @@
             background: #1e1e1e; /* domyślnie night */
             color: #f0f0f0;
             margin: 0;
-            padding: 0;
             transition: background 0.3s, color 0.3s;
         }
         body.day {
             background: #e8f0fe;
             color: #333;
         }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 2px solid currentColor;
+            border-radius: 20px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .layout {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+        }
+
+        /* Lewa kolumna z wideo */
+        .videos {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .videos iframe {
+            width: 260px;
+            height: 460px;
+            border-radius: 12px;
+        }
+
+        /* Środkowa część strony */
         .container {
             max-width: 600px;
-            margin: 0 auto;
             text-align: center;
-            padding: 60px 20px;
         }
         .title {
             font-weight: 900;
@@ -70,83 +103,54 @@
             margin-bottom: 15px;
         }
 
-        /* Przycisk zmiany trybu */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: 2px solid currentColor;
-            border-radius: 20px;
-            padding: 8px 14px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            color: inherit;
-        }
-
         /* Licznik subów */
         .counter-box {
             margin: 30px auto;
-            max-width: 400px;
         }
         .counter-box iframe {
             border-radius: 12px;
             width: 100%;
-            height: 120px;
-        }
-
-        /* Lewa sekcja z wideo */
-        .videos {
-            position: fixed;
-            top: 150px;
-            left: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .videos iframe {
-            width: 260px;
-            height: 460px;
-            border-radius: 12px;
+            height: 200px;
         }
     </style>
 </head>
 <body class="night">
-    <!-- Przycisk zmiany trybu -->
     <button class="theme-toggle" onclick="toggleTheme()">🌙 Night</button>
 
-    <div class="container">
-        <div class="title">KristeeL</div>
-
-        <div class="links">
-            <a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-            <a class="tiktok" href="https://www.tiktok.com/@2kristeel2?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a class="x" href="https://www.x.com/2KristeL2" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
-            <a class="kick" href="https://kick.com/2kristelowski2" target="_blank"><i class="fas fa-video"></i> Kick</a>
-            <a class="discord" href="https://discord.gg/4hAP6Td9tG" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+    <div class="layout">
+        <!-- Lewa kolumna z filmami -->
+        <div class="videos">
+            <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/W0ZDRQwchRw" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <!-- Licznik subów -->
-        <div class="counter-box">
-            <iframe src="https://livecounts.io/embed/youtube-subscriber/UCfh7r9a1Khf0zOYfzzvn4rA" frameborder="0"></iframe>
-        </div>
+        <!-- Główna część -->
+        <div class="container">
+            <div class="title">KristeeL</div>
 
-        <hr>
-        <div class="donate-text">💖 Jeśli chcesz mnie wesprzeć, to poniżej znajdziesz opcje wysłania mi donate.</div>
-        
-        <div class="links">
-            <a class="tipo" href="https://tipo.live/p/kristeel" target="_blank"><i class="fas fa-donate"></i> Donate (Tipo)</a>
-            <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
-        </div>
-    </div>
+            <div class="links">
+                <a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                <a class="tiktok" href="https://www.tiktok.com/@2kristeel2?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a class="x" href="https://www.x.com/2KristeL2" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+                <a class="kick" href="https://kick.com/2kristelowski2" target="_blank"><i class="fas fa-video"></i> Kick</a>
+                <a class="discord" href="https://discord.gg/4hAP6Td9tG" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+            </div>
 
-    <!-- Sekcja wideo po lewej -->
-    <div class="videos">
-        <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/W0ZDRQwchRw" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" frameborder="0" allowfullscreen></iframe>
+            <!-- Licznik subów -->
+            <div class="counter-box">
+                <iframe src="https://socialcounts.org/youtube-live-subscriber-count/UCfh7r9a1Khf0zOYfzzvn4rA/embed" frameborder="0"></iframe>
+            </div>
+
+            <hr>
+            <div class="donate-text">💖 Jeśli chcesz mnie wesprzeć, to poniżej znajdziesz opcje wysłania mi donate.</div>
+            
+            <div class="links">
+                <a class="tipo" href="https://tipo.live/p/kristeel" target="_blank"><i class="fas fa-donate"></i> Donate (Tipo)</a>
+                <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -163,4 +167,3 @@
     </script>
 </body>
 </html>
-

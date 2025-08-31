@@ -2,154 +2,176 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title> KristeeL official website </title>
+    <title>KristeeL official website</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #1e1e1e; /* domyślnie night */
-            color: #f0f0f0;
             margin: 0;
+            padding: 60px 20px;
             transition: background 0.3s, color 0.3s;
+            color: #f0f0f0;
+            background: #121212; /* domyślny night */
         }
-        body.day {
+
+        /* Tryby */
+        body.day-mode {
             background: #e8f0fe;
             color: #333;
         }
 
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: 2px solid currentColor;
-            border-radius: 20px;
-            padding: 8px 14px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            color: inherit;
+        body.night-mode {
+            background: #121212;
+            color: #f0f0f0;
         }
 
-        .layout {
+        .title {
+            font-weight: 900;
+            font-size: 52px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .main-container {
             display: flex;
-            align-items: flex-start;
             justify-content: center;
             gap: 40px;
-            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+            align-items: flex-start;
+            flex-wrap: wrap;
         }
 
-        /* Lewa kolumna z wideo */
-        .videos {
+        .video-column {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-        .videos iframe {
-            width: 260px;
-            height: 460px;
+
+        .video-container {
+            position: relative;
+            width: 400px;
+            padding-bottom: 225px;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
             border-radius: 12px;
         }
 
-        /* Środkowa część strony */
-        .container {
-            max-width: 600px;
-            text-align: center;
-        }
-        .title {
-            font-weight: 900;
-            font-size: 52px;
-            margin-bottom: 40px;
-        }
         .links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 18px;
+            max-width: 300px;
         }
+
         a {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             padding: 14px 20px;
             border-radius: 12px;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             color: white;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease, background 0.3s, color 0.3s;
         }
-        a:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
+
+        a:hover { transform: scale(1.05); opacity: 0.9; }
+
+        /* Kolory przycisków */
         .yt { background: #FF0000; }
-        .tiktok { background: #222; }
-        .x { background: #222; }
+        .tiktok { background: #1c1c1c; }
+        .x { background: #222222; }
         .kick { background: #53fc18; color: #111; }
         .discord { background: #5865F2; }
         .tipo { background: #28a745; }
         .steam-donate { background: #2a475e; }
 
-        hr {
-            margin: 30px 0 15px 0;
+        hr { margin: 30px 0 15px 0; border: none; border-top: 2px solid rgba(255,255,255,0.1); }
+        body.day-mode hr { border-top: 2px solid rgba(0,0,0,0.1); }
+
+        .donate-text { font-size: 16px; font-weight: 500; margin-bottom: 15px; }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
             border: none;
-            border-top: 2px solid rgba(0,0,0,0.2);
-        }
-        .donate-text {
-            font-size: 16px;
-            margin-bottom: 15px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* Licznik subów */
-        .counter-box {
-            margin: 30px auto;
-        }
-        .counter-box iframe {
-            border-radius: 12px;
-            width: 100%;
-            height: 200px;
+        .theme-toggle:hover { background: #555; }
+        body.day-mode .theme-toggle { background: #333; color: #fff; }
+        body.night-mode .theme-toggle { background: #f0f0f0; color: #121212; }
+
+        @media(max-width: 900px) {
+            .main-container { flex-direction: column; align-items: center; }
+            .video-column, .links { max-width: 100%; }
         }
     </style>
 </head>
-<body class="night">
-    <button class="theme-toggle" onclick="toggleTheme()">🌙 Night</button>
+<body class="night-mode">
 
-    <div class="layout">
-        <!-- Lewa kolumna z filmami -->
-        <div class="videos">
-            <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" frameborder="0" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/W0ZDRQwchRw" frameborder="0" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" frameborder="0" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" frameborder="0" allowfullscreen></iframe>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 night</button>
+    <div class="title">KristeeL</div>
+
+    <div class="main-container">
+        <div class="video-column">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" title="KristeeL Shorts 1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/W0ZDRQwchRw" title="KristeeL Shorts 2"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" title="KristeeL Shorts 3"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" title="KristeeL Shorts 4"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
         </div>
 
-        <!-- Główna część -->
-        <div class="container">
-            <div class="title">KristeeL</div>
-
-            <div class="links">
-                <a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-                <a class="tiktok" href="https://www.tiktok.com/@2kristeel2?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-                <a class="x" href="https://www.x.com/2KristeL2" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
-                <a class="kick" href="https://kick.com/2kristelowski2" target="_blank"><i class="fas fa-video"></i> Kick</a>
-                <a class="discord" href="https://discord.gg/4hAP6Td9tG" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-            </div>
-
-            <!-- Licznik subów -->
-            <div class="counter-box">
-                <iframe src="https://socialcounts.org/youtube-live-subscriber-count/UCfh7r9a1Khf0zOYfzzvn4rA/embed" frameborder="0"></iframe>
-            </div>
-
+        <div class="links">
+            <a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a class="tiktok" href="https://www.tiktok.com/@2kristeel2?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a class="x" href="https://www.x.com/2KristeL2" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+            <a class="kick" href="https://kick.com/2kristelowski2" target="_blank"><i class="fas fa-video"></i> Kick</a>
+            <a class="discord" href="https://discord.gg/4hAP6Td9tG" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+            
             <hr>
             <div class="donate-text">💖 Jeśli chcesz mnie wesprzeć, to poniżej znajdziesz opcje wysłania mi donate.</div>
             
-            <div class="links">
-                <a class="tipo" href="https://tipo.live/p/kristeel" target="_blank"><i class="fas fa-donate"></i> Donate (Tipo)</a>
-                <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
-            </div>
+            <a class="tipo" href="https://tipo.live/p/kristeel" target="_blank"><i class="fas fa-donate"></i> Donate (Tipo)</a>
+            <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
         </div>
     </div>
 
@@ -157,11 +179,15 @@
         function toggleTheme() {
             const body = document.body;
             const btn = document.querySelector('.theme-toggle');
-            body.classList.toggle('day');
-            if (body.classList.contains('day')) {
-                btn.textContent = "☀️ Day";
+
+            if(body.classList.contains('night-mode')){
+                body.classList.remove('night-mode');
+                body.classList.add('day-mode');
+                btn.textContent = '☀️ day';
             } else {
-                btn.textContent = "🌙 Night";
+                body.classList.remove('day-mode');
+                body.classList.add('night-mode');
+                btn.textContent = '🌙 night';
             }
         }
     </script>

@@ -26,10 +26,14 @@
             color: #f0f0f0;
         }
 
-        body.gay-mode {
-            background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/1024px-Gay_Pride_Flag.svg.png") no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
+        body.morning-mode {
+            background: #FFF5CC; /* pastelowy żółty */
+            color: #333;
+        }
+
+        body.evening-mode {
+            background: #2c2c54; /* granat/fiolet */
+            color: #f0f0f0;
         }
 
         .title {
@@ -109,6 +113,8 @@
 
         hr { margin: 30px 0 15px 0; border: none; border-top: 2px solid rgba(255,255,255,0.1); }
         body.day-mode hr { border-top: 2px solid rgba(0,0,0,0.1); }
+        body.morning-mode hr { border-top: 2px solid rgba(0,0,0,0.3); }
+        body.evening-mode hr { border-top: 2px solid rgba(255,255,255,0.3); }
 
         .donate-text { font-size: 16px; font-weight: 500; margin-bottom: 15px; }
 
@@ -130,7 +136,8 @@
         .theme-toggle:hover { background: #555; }
         body.day-mode .theme-toggle { background: #333; color: #fff; }
         body.night-mode .theme-toggle { background: #f0f0f0; color: #121212; }
-        body.gay-mode .theme-toggle { background: rgba(0,0,0,0.6); color: #fff; }
+        body.morning-mode .theme-toggle { background: #ffa500; color: #333; }
+        body.evening-mode .theme-toggle { background: #4b0082; color: #fff; }
 
         @media(max-width: 900px) {
             .main-container { flex-direction: column; align-items: center; }
@@ -189,14 +196,18 @@
 
             if(body.classList.contains('night-mode')){
                 body.classList.remove('night-mode');
+                body.classList.add('morning-mode');
+                btn.textContent = '🌅 morning';
+            } else if(body.classList.contains('morning-mode')){
+                body.classList.remove('morning-mode');
                 body.classList.add('day-mode');
                 btn.textContent = '☀️ day';
             } else if(body.classList.contains('day-mode')){
                 body.classList.remove('day-mode');
-                body.classList.add('gay-mode');
-                btn.textContent = '🌈 gay';
+                body.classList.add('evening-mode');
+                btn.textContent = '🌇 evening';
             } else {
-                body.classList.remove('gay-mode');
+                body.classList.remove('evening-mode');
                 body.classList.add('night-mode');
                 btn.textContent = '🌙 night';
             }

@@ -16,10 +16,25 @@
         }
 
         /* Tryby */
-        body.day-mode { background: #e8f0fe; color: #333; }
-        body.night-mode { background: #121212; color: #f0f0f0; }
-        body.morning-mode { background: #FFF5CC; color: #333; }
-        body.evening-mode { background: #2c2c54; color: #f0f0f0; }
+        body.day-mode {
+            background: #e8f0fe;
+            color: #333;
+        }
+
+        body.night-mode {
+            background: #121212;
+            color: #f0f0f0;
+        }
+
+        body.morning-mode {
+            background: #FFF5CC; /* pastelowy żółty */
+            color: #333;
+        }
+
+        body.evening-mode {
+            background: #2c2c54; /* granat/fiolet */
+            color: #f0f0f0;
+        }
 
         .title {
             font-weight: 900;
@@ -38,26 +53,19 @@
             flex-wrap: wrap;
         }
 
-        /* Kolumna z filmami */
         .video-column {
             display: flex;
             flex-direction: column;
             gap: 30px;
-            max-width: 600px; /* zmniejszone z 700px */
             width: 100%;
-        }
-
-        .section-title {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: left;
+            max-width: 500px; /* ograniczamy szerokość */
         }
 
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* proporcje 16:9 */
+            max-width: 500px; /* ograniczamy szerokość */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 12px;
@@ -74,7 +82,6 @@
             border-radius: 12px;
         }
 
-        /* Linki */
         .links {
             display: flex;
             flex-direction: column;
@@ -95,6 +102,7 @@
             color: white;
             transition: transform 0.2s ease, opacity 0.2s ease, background 0.3s, color 0.3s;
         }
+
         a:hover { transform: scale(1.05); opacity: 0.9; }
 
         /* Kolory przycisków */
@@ -105,7 +113,7 @@
         .discord { background: #5865F2; }
         .tipo { background: #28a745; }
         .steam-donate { background: #2a475e; }
-        .csfloat { background: #ff8800; }
+        .csfloat { background: #ff6600; }
 
         hr { margin: 30px 0 15px 0; border: none; border-top: 2px solid rgba(255,255,255,0.1); }
         body.day-mode hr { border-top: 2px solid rgba(0,0,0,0.1); }
@@ -128,6 +136,7 @@
             z-index: 1000;
             transition: background 0.3s, color 0.3s;
         }
+
         .theme-toggle:hover { background: #555; }
         body.day-mode .theme-toggle { background: #333; color: #fff; }
         body.night-mode .theme-toggle { background: #f0f0f0; color: #121212; }
@@ -146,39 +155,37 @@
     <div class="title">KristeeL</div>
 
     <div class="main-container">
-        <!-- LEWA STRONA: FILMY -->
         <div class="video-column">
-            <div class="section-title">Polecane wideo</div>
+            <h2>Polecane</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8BC-Crk0jA8?start=87" title="Polecane wideo"
+                <iframe src="https://www.youtube.com/embed/8BC-Crk0jA8" title="Polecany film"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
 
-            <div class="section-title">Shortsy</div>
+            <h2>Shortsy</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" title="Shorts 1"
+                <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" title="KristeeL Shorts 1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/W0ZDRQwchRw" title="Shorts 2"
+                <iframe src="https://www.youtube.com/embed/W0ZDRQwchRw" title="KristeeL Shorts 2"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" title="Shorts 3"
+                <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" title="KristeeL Shorts 3"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" title="Shorts 4"
+                <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" title="KristeeL Shorts 4"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- PRAWA STRONA: LINKI -->
         <div class="links">
             <a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
             <a class="tiktok" href="https://www.tiktok.com/@2kristeel2?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
@@ -188,11 +195,12 @@
             
             <hr>
             <div class="donate-text">💖 Jeśli chcesz mnie wesprzeć, to poniżej znajdziesz opcje wysłania mi donate.</div>
+            
             <a class="tipo" href="https://tipo.live/p/kristeel" target="_blank"><i class="fas fa-donate"></i> Donate (Tipo)</a>
             <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
             
             <hr>
-            <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank"><i class="fas fa-gun"></i> CS Float</a>
+            <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank"><i class="fas fa-dice"></i> CS Float</a>
         </div>
     </div>
 
@@ -222,4 +230,3 @@
     </script>
 </body>
 </html>
-

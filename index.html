@@ -16,25 +16,10 @@
         }
 
         /* Tryby */
-        body.day-mode {
-            background: #e8f0fe;
-            color: #333;
-        }
-
-        body.night-mode {
-            background: #121212;
-            color: #f0f0f0;
-        }
-
-        body.morning-mode {
-            background: #FFF5CC; /* pastelowy żółty */
-            color: #333;
-        }
-
-        body.evening-mode {
-            background: #2c2c54; /* granat/fiolet */
-            color: #f0f0f0;
-        }
+        body.day-mode { background: #e8f0fe; color: #333; }
+        body.night-mode { background: #121212; color: #f0f0f0; }
+        body.morning-mode { background: #FFF5CC; color: #333; }
+        body.evening-mode { background: #2c2c54; color: #f0f0f0; }
 
         .title {
             font-weight: 900;
@@ -47,7 +32,7 @@
             display: flex;
             justify-content: center;
             gap: 40px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: auto;
             align-items: flex-start;
             flex-wrap: wrap;
@@ -58,13 +43,13 @@
             flex-direction: column;
             gap: 30px;
             width: 100%;
-            max-width: 400px; /* zmniejszone */
+            max-width: 450px; /* zmniejszone */
         }
 
         .video-container {
             position: relative;
             width: 100%;
-            max-width: 400px; /* zmniejszone */
+            max-width: 450px; /* zmniejszone */
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
@@ -82,10 +67,11 @@
             border-radius: 12px;
         }
 
-        .video-column h2 {
-            margin: 0 0 10px 0;
+        .section-title {
             font-size: 22px;
-            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: left;
         }
 
         .links {
@@ -108,7 +94,6 @@
             color: white;
             transition: transform 0.2s ease, opacity 0.2s ease, background 0.3s, color 0.3s;
         }
-
         a:hover { transform: scale(1.05); opacity: 0.9; }
 
         /* Kolory przycisków */
@@ -119,7 +104,6 @@
         .discord { background: #5865F2; }
         .tipo { background: #28a745; }
         .steam-donate { background: #2a475e; }
-        .csfloat { background: #ff6600; }
 
         hr { margin: 30px 0 15px 0; border: none; border-top: 2px solid rgba(255,255,255,0.1); }
         body.day-mode hr { border-top: 2px solid rgba(0,0,0,0.1); }
@@ -162,14 +146,14 @@
 
     <div class="main-container">
         <div class="video-column">
-            <h2>🔥 Polecane</h2>
+            <div class="section-title">🔥 Polecane filmy</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8BC-Crk0jA8" title="Polecany film"
+                <iframe src="https://www.youtube.com/embed/8BC-Crk0jA8" title="KristeeL Film 1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
 
-            <h2>🎬 Shortsy</h2>
+            <div class="section-title">🎬 Polecane shortsy</div>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" title="KristeeL Shorts 1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -182,11 +166,6 @@
             </div>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/E8oUzCKWH6Q" title="KristeeL Shorts 3"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/6SzP4P-r1cA" title="KristeeL Shorts 4"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
@@ -206,7 +185,8 @@
             <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
             
             <hr>
-            <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank"><i class="fas fa-dice"></i> CS Float</a>
+            <div class="donate-text">🔫 CSFloat</div>
+            <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank"><i class="fas fa-gun"></i> CSFloat</a>
         </div>
     </div>
 

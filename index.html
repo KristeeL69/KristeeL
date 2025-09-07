@@ -16,25 +16,10 @@
         }
 
         /* Tryby */
-        body.day-mode {
-            background: #e8f0fe;
-            color: #333;
-        }
-
-        body.night-mode {
-            background: #121212;
-            color: #f0f0f0;
-        }
-
-        body.morning-mode {
-            background: #FFF5CC;
-            color: #333;
-        }
-
-        body.evening-mode {
-            background: #2c2c54;
-            color: #f0f0f0;
-        }
+        body.day-mode { background: #e8f0fe; color: #333; }
+        body.night-mode { background: #121212; color: #f0f0f0; }
+        body.morning-mode { background: #FFF5CC; color: #333; }
+        body.evening-mode { background: #2c2c54; color: #f0f0f0; }
 
         .title {
             font-weight: 900;
@@ -47,7 +32,7 @@
             display: flex;
             justify-content: center;
             gap: 40px;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: auto;
             align-items: flex-start;
             flex-wrap: wrap;
@@ -56,13 +41,21 @@
         .video-column {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
+            max-width: 500px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
         .video-container {
             position: relative;
-            width: 400px;
-            padding-bottom: 225px;
+            width: 100%;
+            padding-bottom: 56.25%; /* proporcje 16:9 */
             height: 0;
             overflow: hidden;
             border-radius: 12px;
@@ -110,7 +103,7 @@
         .discord { background: #5865F2; }
         .tipo { background: #28a745; }
         .steam-donate { background: #2a475e; }
-        .csfloat { background: #ff9900; }
+        .csfloat { background: #ff6600; }
 
         hr { margin: 30px 0 15px 0; border: none; border-top: 2px solid rgba(255,255,255,0.1); }
         body.day-mode hr { border-top: 2px solid rgba(0,0,0,0.1); }
@@ -153,6 +146,17 @@
 
     <div class="main-container">
         <div class="video-column">
+            
+            <!-- Sekcja Polecane filmy -->
+            <div class="section-title">🎬 Polecane filmy</div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/8BC-Crk0jA8?start=87" title="KristeeL Film"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+            <!-- Sekcja Shortsy -->
+            <div class="section-title">⚡ Shortsy</div>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/r-dn5cuIBf8" title="KristeeL Shorts 1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -173,11 +177,6 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/xP0v8KmH_9g" title="KristeeL Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
         </div>
 
         <div class="links">
@@ -194,15 +193,7 @@
             <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank"><i class="fab fa-steam"></i> Donate Steam</a>
 
             <hr>
-            <div class="donate-text">🔫 CSFloat</div>
-            <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank"><i class="fas fa-gun"></i> CSFloat</a>
-
-            <hr>
-            <div class="donate-text">🔊 Windows XP error</div>
-            <iframe width="110" height="200" 
-                src="https://www.myinstants.com/instant/windows-xp-error/embed/" 
-                frameborder="0" scrolling="no">
-            </iframe>
+            <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank"><i class="fas fa-gamepad"></i> CS Float</a>
         </div>
     </div>
 

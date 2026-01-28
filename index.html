@@ -1,154 +1,136 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KristeeL official website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KristeeL official website</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            color: #f0f0f0;
+            background: #121212;
+        }
 
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        body.day-mode { background: #e8f0fe; color: #333; }
+        body.night-mode { background: #121212; color: #f0f0f0; }
+        body.morning-mode { background: #FFF5CC; color: #333; }
+        body.evening-mode { background: #2c2c54; color: #f0f0f0; }
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    padding:60px 20px;
-    background:#121212;
-    color:#f0f0f0;
-    transition:.3s;
-}
+        .title {
+            font-weight: 900;
+            font-size: 52px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-body.day-mode{background:#e8f0fe;color:#333;}
-body.night-mode{background:#121212;color:#f0f0f0;}
-body.morning-mode{background:#FFF5CC;color:#333;}
-body.evening-mode{background:#2c2c54;color:#f0f0f0;}
+        .main-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
 
-.title{
-    font-size:52px;
-    font-weight:900;
-    text-align:center;
-    margin-bottom:50px;
-}
+        .video-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
 
-.main-container{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    max-width:1200px;
-    margin:auto;
-    flex-wrap:wrap;
-}
+        .section-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-.video-column{
-    display:flex;
-    flex-direction:column;
-    gap:25px;
-}
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
 
-.section-title{
-    font-size:26px;
-    font-weight:bold;
-}
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
 
-.video-container{
-    width:100%;
-    max-width:380px;
-    aspect-ratio:16/9;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 6px 12px rgba(0,0,0,.2);
-}
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-width: 300px;
+        }
 
-.video-container iframe{
-    width:100%;
-    height:100%;
-    border:none;
-}
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
 
-/* ===== SLIDER ===== */
-.slider{
-    position:relative;
-    max-width:380px;
-}
+        a:hover { transform: scale(1.05); opacity: 0.9; }
 
-.slide{
-    display:none;
-}
+        .yt { background: #FF0000; }
+        .tiktok { background: #1c1c1c; }
+        .x { background: #222222; }
+        .kick { background: #53fc18; color: #111; }
+        .discord { background: #5865F2; }
+        .tipply { background: #00c853; }
+        .steam-donate { background: #2a475e; }
+        .csfloat { background: #3cba54; }
 
-.slide.active{
-    display:block;
-}
+        hr {
+            margin: 30px 0 15px;
+            border: none;
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
 
-.slider-btn{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    background:rgba(0,0,0,.6);
-    border:none;
-    color:white;
-    font-size:22px;
-    padding:6px 10px;
-    cursor:pointer;
-    border-radius:6px;
-}
+        body.day-mode hr { border-top: 2px solid rgba(0,0,0,0.1); }
+        body.morning-mode hr { border-top: 2px solid rgba(0,0,0,0.3); }
+        body.evening-mode hr { border-top: 2px solid rgba(255,255,255,0.3); }
 
-.slider-btn.left{left:10px;}
-.slider-btn.right{right:10px;}
+        .donate-text {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
 
-/* ===== LINKS ===== */
-.links{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    max-width:300px;
-}
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+        }
 
-a{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    padding:14px;
-    border-radius:12px;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:bold;
-    color:white;
-    transition:.2s;
-}
-
-a:hover{transform:scale(1.05);opacity:.9;}
-
-.yt{background:#ff0000;}
-.tiktok{background:#1c1c1c;}
-.x{background:#222;}
-.kick{background:#53fc18;color:#111;}
-.discord{background:#5865F2;}
-.tipply{background:#00c853;}
-.steam-donate{background:#2a475e;}
-.csfloat{background:#3cba54;}
-
-hr{
-    border:none;
-    border-top:2px solid rgba(255,255,255,.15);
-    margin:30px 0 15px;
-}
-
-.theme-toggle{
-    position:fixed;
-    top:20px;
-    right:20px;
-    padding:10px 14px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    z-index:1000;
-}
-
-@media(max-width:900px){
-    .main-container{flex-direction:column;align-items:center;}
-}
-</style>
+        @media(max-width: 900px) {
+            .main-container { flex-direction: column; align-items: center; }
+        }
+    </style>
 </head>
 
 <body class="night-mode">
@@ -159,118 +141,92 @@ hr{
 
 <div class="main-container">
 
-<!-- ===== VIDEO COLUMN ===== -->
-<div class="video-column">
-
-<div class="section-title">🔥 Polecane filmy</div>
-
-<div class="slider">
-
-    <div class="slide active">
+    <div class="video-column">
+        <div class="section-title">🔥 Polecane filmy</div>
         <div class="video-container">
             <iframe loading="lazy"
                 src="https://www.youtube.com/embed/8BC-Crk0jA8?start=87"
                 allowfullscreen></iframe>
         </div>
-    </div>
 
-    <div class="slide">
+        <div class="section-title">🎬 Polecane shortsy</div>
+
         <div class="video-container">
             <iframe loading="lazy"
-                src="https://www.youtube.com/embed/ivT1gRgMPEA"
+                src="https://www.youtube.com/embed/r-dn5cuIBf8"
+                allowfullscreen></iframe>
+        </div>
+
+        <div class="video-container">
+            <iframe loading="lazy"
+                src="https://www.youtube.com/embed/W0ZDRQwchRw"
+                allowfullscreen></iframe>
+        </div>
+
+        <div class="video-container">
+            <iframe loading="lazy"
+                src="https://www.youtube.com/embed/kT6xTjqUBzw"
                 allowfullscreen></iframe>
         </div>
     </div>
 
-    <button class="slider-btn left" onclick="prevSlide()">❮</button>
-    <button class="slider-btn right" onclick="nextSlide()">❯</button>
+    <div class="links">
+        <a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
 
-</div>
+        <a class="tiktok" href="https://www.tiktok.com/@2kristeel2" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
 
-<div class="section-title">🎬 Polecane shortsy</div>
+        <a class="x" href="https://www.x.com/2KristeL2" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-x-twitter"></i> X (Twitter)
+        </a>
 
-<div class="video-container">
-    <iframe loading="lazy" src="https://www.youtube.com/embed/r-dn5cuIBf8" allowfullscreen></iframe>
-</div>
+        <a class="kick" href="https://kick.com/2kristelowski2" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-video"></i> Kick
+        </a>
 
-<div class="video-container">
-    <iframe loading="lazy" src="https://www.youtube.com/embed/W0ZDRQwchRw" allowfullscreen></iframe>
-</div>
+        <a class="discord" href="https://discord.gg/4hAP6Td9tG" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-discord"></i> Discord
+        </a>
 
-<div class="video-container">
-    <iframe loading="lazy" src="https://www.youtube.com/embed/kT6xTjqUBzw" allowfullscreen></iframe>
-</div>
+        <hr>
+        <div class="donate-text">💖 Jeśli chcesz mnie wesprzeć, to poniżej znajdziesz opcje wysłania mi donate.</div>
 
-</div>
+        <a class="tipply" href="https://tipply.pl/@KristeeL" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-donate"></i> Donate (Tipply)
+        </a>
 
-<!-- ===== LINKS ===== -->
-<div class="links">
+        <a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-steam"></i> Donate Steam
+        </a>
 
-<a class="yt" href="https://www.youtube.com/@2KristeeL2" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-youtube"></i>YouTube</a>
+        <hr>
 
-<a class="tiktok" href="https://www.tiktok.com/@2kristeel2" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-tiktok"></i>TikTok</a>
-
-<a class="x" href="https://www.x.com/2KristeL2" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-x-twitter"></i>X</a>
-
-<a class="kick" href="https://kick.com/2kristelowski2" target="_blank" rel="noopener noreferrer">
-<i class="fas fa-video"></i>Kick</a>
-
-<a class="discord" href="https://discord.gg/4hAP6Td9tG" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-discord"></i>Discord</a>
-
-<hr>
-
-<a class="tipply" href="https://tipply.pl/@KristeeL" target="_blank" rel="noopener noreferrer">
-<i class="fas fa-donate"></i>Donate (Tipply)</a>
-
-<a class="steam-donate" href="https://steamcommunity.com/tradeoffer/new/?partner=1271327686&token=SJXEnMFR" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-steam"></i>Donate Steam</a>
-
-<hr>
-
-<a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank" rel="noopener noreferrer">
-<img src="https://csfloat.com/favicon.ico" style="width:20px;height:20px;">CSFloat</a>
-
-</div>
+        <a class="csfloat" href="https://csfloat.com/stall/76561199231593414" target="_blank" rel="noopener noreferrer">
+            <img src="https://csfloat.com/favicon.ico" style="width:20px;height:20px;border-radius:4px;">
+            CSFloat
+        </a>
+    </div>
 </div>
 
 <script>
-/* ===== THEME ===== */
-const themes=['night-mode','morning-mode','day-mode','evening-mode'];
-const labels=['🌙 night','🌅 morning','☀️ day','🌇 evening'];
+    const themes = ['night-mode','morning-mode','day-mode','evening-mode'];
+    const labels = ['🌙 night','🌅 morning','☀️ day','🌇 evening'];
 
-function toggleTheme(){
-    let i=Number(localStorage.getItem('themeIndex'))||0;
-    i=(i+1)%themes.length;
-    document.body.className=themes[i];
-    document.querySelector('.theme-toggle').textContent=labels[i];
-    localStorage.setItem('themeIndex',i);
-}
-document.body.className=themes[Number(localStorage.getItem('themeIndex'))||0];
+    function setTheme(i){
+        document.body.className = themes[i];
+        document.querySelector('.theme-toggle').textContent = labels[i];
+        localStorage.setItem('themeIndex', i);
+    }
 
-/* ===== SLIDER ===== */
-let slideIndex=0;
-const slides=document.querySelectorAll('.slide');
+    function toggleTheme(){
+        let i = Number(localStorage.getItem('themeIndex')) || 0;
+        setTheme((i + 1) % themes.length);
+    }
 
-function showSlide(i){
-    slides.forEach(s=>s.classList.remove('active'));
-    slides[i].classList.add('active');
-}
-
-function nextSlide(){
-    slideIndex=(slideIndex+1)%slides.length;
-    showSlide(slideIndex);
-}
-
-function prevSlide(){
-    slideIndex=(slideIndex-1+slides.length)%slides.length;
-    showSlide(slideIndex);
-}
-
-setInterval(nextSlide,6000);
+    setTheme(Number(localStorage.getItem('themeIndex')) || 0);
 </script>
 
 </body>
